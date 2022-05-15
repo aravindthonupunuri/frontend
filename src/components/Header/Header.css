@@ -1,0 +1,40 @@
+
+.navbar {
+    background-color: #458da9 !important;
+  }
+  .header-title{
+    margin-left: 35% !important;
+  }
+
+  .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+
+  }
+  
+  .nav-link {
+    color: #1c1c1c;
+    font-size: 17px;
+  }
+  
+  .navbar-brand {
+    color: #1c1c1c;
+    font-size: 37px !important;
+  }
+  .navbar-brand:hover {
+    color: white;
+  }
+  .btn {
+    background-color: #444054;
+  }
+  
+  .nav-link:hover {
+    color: white;
+  }
+  .navbar-nav {
+    margin-left: auto !important;
+  }
+  

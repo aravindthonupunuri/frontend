@@ -1,0 +1,21 @@
+.dish-cards {
+    margin-left: 10%;
+width: 80%; }
+ .peak-peice-heading{
+    font-size: 75px !important;
+    justify-content: center;
+    margin-left: 33%;
+ }
+ .card img{
+ width: 56%
+ }
+ 
+ .dish-item-card .card{
+    border: 2px solid #ff8d0040;
+ }
+ 
+ .dish-cards .card {
+    flex-direction: row;
+    align-items: center;
+  }
+ 
