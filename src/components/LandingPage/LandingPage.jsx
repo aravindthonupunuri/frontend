@@ -13,9 +13,9 @@ class LandingPage extends Component {
     render() {
         return (
             <div className="row landing">
-                <div className="col-md-12 text-center" style={{"height":"100%"}}>
-                    <h2  style={{ color: "white", fontSize: "100px" }}>
-                        MOTEL BOOKING
+                <div className="col-md-12 text-center" style={{ "height": "100%" }}>
+                    <h2 style={{ color: "white", fontSize: "100px" }}>
+                        SPARTAN GROUP OF HOTELS
                     </h2>
                     <h1 style={{ color: "white" }}>
                         Luxury is not a place, it's an experience.
