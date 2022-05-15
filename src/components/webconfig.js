@@ -1,0 +1,1 @@
+export const webserver = "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com";

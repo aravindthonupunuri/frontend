@@ -15,7 +15,7 @@ class PeakPricePage extends Component {
     }
 
     getPeakPriceList = () => {
-        fetch('http://localhost:8080/api/price/getallpeakprices').then(res => res.json()).then(res => this.setState({ priceList: res }));
+        fetch('http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/getallpeakprices').then(res => res.json()).then(res => this.setState({ priceList: res }));
     }
 
     componentDidMount() {
@@ -47,9 +47,9 @@ class PeakPricePage extends Component {
                     <Row>
                         <h1 className='peak-peice-heading'>Peak Price</h1>
                         <Col xs={1}></Col>
-                <span>
+                        <span>
                             <br />
-                            <Button type="primary" shape="round" size="Large" onClick={(e) => this.setState({showModal: true})}>
+                            <Button type="primary" shape="round" size="Large" onClick={(e) => this.setState({ showModal: true })}>
                                 Add peak Price
                             </Button>
                         </span>

@@ -78,7 +78,7 @@ function Bookingscreen({ match }) {
         setError("");
         setLoading(true);
         const data = (
-          await axios.get("http://localhost:8080/api/room/getroombyid/"+match.params.roomid)
+          await axios.get("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/room/getroombyid/" + match.params.roomid)
         ).data;
         console.log(data);
         setRoom(data);
@@ -94,7 +94,7 @@ function Bookingscreen({ match }) {
 
   useEffect(() => {
     const totaldays = moment.duration(todate.diff(fromdate)).asDays() + 1;
-    console.log('totalDays',totalDays)
+    console.log('totalDays', totalDays)
     setTotalDays(totaldays);
     const roomrent = totalDays * room.rentPerDay;
     setTotalAmount(roomrent);
@@ -118,14 +118,14 @@ function Bookingscreen({ match }) {
   };
 
   const handlePrice = async () => {
-     const fromDate = moment(match.params.fromdate, "DD-MM-YYYY");
-     const toDate = moment(match.params.todate, "DD-MM-YYYY");
-     console.log('@@',fromDate._i, totalAmount, amenitiesAmount)
+    const fromDate = moment(match.params.fromdate, "DD-MM-YYYY");
+    const toDate = moment(match.params.todate, "DD-MM-YYYY");
+    console.log('@@', fromDate._i, totalAmount, amenitiesAmount)
     const bookingDetails = {
       room,
       userid: JSON.parse(localStorage.getItem("currentUserId")),
-      fromdate : fromDate._i,
-      todate : toDate._i,
+      fromdate: fromDate._i,
+      todate: toDate._i,
       guestCount,
       totalamount: totalAmount + amenitiesAmount,
       totaldays: totalDays,
@@ -139,11 +139,11 @@ function Bookingscreen({ match }) {
 
 
     axios
-      .post("http://localhost:8080/api/bookings/getUpdatedPrice", bookingDetails)
+      .post("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/getUpdatedPrice", bookingDetails)
       .then((result) => {
         console.log(result);
-        console.log(typeof ((guestCount - 2)*15))
-        console.log(typeof(result.data.body.totalAmount))
+        console.log(typeof ((guestCount - 2) * 15))
+        console.log(typeof (result.data.body.totalAmount))
 
         var newRoomCost = 0;
         if (guestCount > 2) {
@@ -157,7 +157,7 @@ function Bookingscreen({ match }) {
             newRoomCost = newRoomCost * roomCount;
           }
         }
-console.log(newRoomCost)
+        console.log(newRoomCost)
         setnewtotal(newRoomCost);
         setnewOffer(result.data.body.offerapplied);
         setExtra(result.data.body.extracostapplied);
@@ -166,13 +166,13 @@ console.log(newRoomCost)
         if (result.data.body.offerapplied !== "") {
           console.log(
             "====================================== RP" +
-              Number(JSON.parse(localStorage.getItem("rewards"))) +
-              5
+            Number(JSON.parse(localStorage.getItem("rewards"))) +
+            5
           );
           // console.log(JSON.parse(localStorage.getItem("currentUser")).rewards);
           // const result = axios
           //   .put(
-          //     "http://localhost:8080/api/users/updateUserRewards/" +
+          //     "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/users/updateUserRewards/" +
           //       JSON.parse(localStorage.getItem("currentUserId")),
           //     {
           //       rewardsPoints:
@@ -207,8 +207,8 @@ console.log(newRoomCost)
     const bookingDetails = {
       room,
       userid: JSON.parse(localStorage.getItem("currentUserId")),
-      fromdate : fromDate._i,
-      todate : toDate._i,
+      fromdate: fromDate._i,
+      todate: toDate._i,
       guestCount,
       totalamount: newtotal,
       totaldays: totalDays,
@@ -221,7 +221,7 @@ console.log(newRoomCost)
     try {
       setLoading(true);
       const result = await axios.post(
-        "http://localhost:8080/api/bookings/bookroom",
+        "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/bookroom",
         bookingDetails
       );
       setLoading(false);
@@ -235,8 +235,8 @@ console.log(newRoomCost)
           if (rewards === 0) {
             const result = axios
               .put(
-                "http://localhost:8080/api/users/updateUserRewards/" +
-                  JSON.parse(localStorage.getItem("currentUserId")),
+                "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/users/updateUserRewards/" +
+                JSON.parse(localStorage.getItem("currentUserId")),
                 { rewardsPoints: 0 }
               )
               .then((userRes) => {
@@ -259,10 +259,10 @@ console.log(newRoomCost)
       setError(error);
       Swal.fire("Opps", "Error:" + error, "error");
     }
-    setLoading(false);   
+    setLoading(false);
   };
 
- 
+
 
   if (isRoomBooked) {
     // code of decreasing room count
@@ -272,7 +272,7 @@ console.log(newRoomCost)
     console.log(totalRooms);
     console.log(room._id);
     axios
-      .put("http://localhost:8080/api/rooms/updateRoom/" + room.id, {
+      .put("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/rooms/updateRoom/" + room.id, {
         totalRooms,
       })
       .then((result) => {
@@ -298,7 +298,7 @@ console.log(newRoomCost)
             <h1 style={{ color: "rgb(144 92 15)", fontWeight: "bold" }}>
               {room.name}
             </h1>
-           { room.imageUrls && room.imageUrls.length > 0 ?  <img src={room.imageUrls[0]} className="bigimg" alt="" /> : ''}
+            {room.imageUrls && room.imageUrls.length > 0 ? <img src={room.imageUrls[0]} className="bigimg" alt="" /> : ''}
           </div>
           <div className="col">
             <div style={{ textAlign: "right" }}>
@@ -368,7 +368,7 @@ console.log(newRoomCost)
                 <p>Rent per day : {room.rentPerDay}</p>
 
                 {JSON.parse(localStorage.getItem("rewards")) !==
-                0 ? (
+                  0 ? (
                   <>
                     <p style={{ marginRight: "4%" }}>Use Rewards</p>
 

@@ -61,7 +61,7 @@ class RestaurantMenuUpdate extends Component {
             console.log(priceItem1);
 
             if (priceItem === undefined) {
-                fetch("http://localhost:8080/api/price/addprice", {
+                fetch("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/addprice", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ class RestaurantMenuUpdate extends Component {
                     }
                 });
             } else {
-                fetch("http://localhost:8080/api/price/editDiscount/" + priceItem.id, {
+                fetch("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/editDiscount/" + priceItem.id, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -99,12 +99,13 @@ class RestaurantMenuUpdate extends Component {
     deleteItemFromMenu = () => {
         const { priceItem } = this.props;
         if (priceItem !== undefined) {
-            fetch("http://localhost:8080/api/price/deleteprice/" + priceItem.id, {
+            fetch("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/deleteprice/" + priceItem.id, {
                 method: 'delete'
             })
                 .then((res) => {
                     this.closeDishForm();
-                    console.log(res)});
+                    console.log(res)
+                });
         }
     }
 
@@ -176,16 +177,16 @@ class RestaurantMenuUpdate extends Component {
                                             defaultValue={fromdate ? moment(fromdate, "DD-MM-YYYY") : null}
                                             value={fromdate ? moment(fromdate, "DD-MM-YYYY") : null}
                                             onChange={(date) => this.handleFromDateChange(date)}
-                                        />                 
-                                     </Form.Group>
-                                     <Form.Group as={Col} controlId="formGridEmail">
+                                        />
+                                    </Form.Group>
+                                    <Form.Group as={Col} controlId="formGridEmail">
                                         <Form.Label>To Date</Form.Label>
                                         <DatePicker
                                             defaultValue={todate ? moment(todate, "DD-MM-YYYY") : null}
                                             value={todate ? moment(todate, "DD-MM-YYYY") : null}
                                             onChange={(date) => this.handleToDateChange(date)}
-                                        />                 
-                                     </Form.Group>
+                                        />
+                                    </Form.Group>
                                 </Row>
 
                             </Form>
