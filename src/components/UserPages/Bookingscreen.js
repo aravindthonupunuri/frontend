@@ -253,6 +253,9 @@ function Bookingscreen({ match }) {
             window.location.href = "/home";
           }
         }
+        debugger;
+
+        debugger;
         window.location.href = "/bookings";
       });
     } catch (error) {

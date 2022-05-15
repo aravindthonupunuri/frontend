@@ -12,7 +12,7 @@ function EditBookings({ match }) {
   const [toDate, setToDate] = useState();
   const [totalAmount, setTotalAmount] = useState();
   const [totalDays, setTotalDays] = useState();
-  const [remainingAmount, setRemainingAmount] = useState();
+  const [remainingAmount, setRemainingAmount] = useState(100);
   const [ntotalDays, setnTotalDays] = useState(0);
   const [remain, setRemain] = useState(false);
 
@@ -30,7 +30,7 @@ function EditBookings({ match }) {
       setToDate(result.data.todate);
       setTotalAmount(result.data.totalamount);
       setTotalDays(result.data.totaldays);
-      setRemainingAmount(result.data.remainingAmount);
+      // setRemainingAmount(result.data.rentPerDay);
     });
   };
 

@@ -128,7 +128,7 @@ function Homescreen() {
 
   return (
     <>
-      <div style={{ backgroundColor: "grey" }}>
+      <div >
         <div className="container" style={{ zIndex: "11" }}>
           <div className="row mt-5 bs">
             <div className="col-md-3">

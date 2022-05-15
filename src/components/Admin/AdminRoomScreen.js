@@ -17,8 +17,8 @@ function AdminRoomScreen() {
       key: "name",
     },
     { title: "Location", dataIndex: "location", key: "location" },
-    { title: "No of Rooms", dataIndex: "maxcount", key: "maxcount" },
-    { title: "Price per Day", dataIndex: "rentperday", key: "rentperday" },
+    { title: "No of Rooms", dataIndex: "maxCount", key: "maxCount" },
+    { title: "Price per Day", dataIndex: "rentPerDay", key: "rentPerDay" },
     { title: "Room Types", dataIndex: "type", key: "type" },
   ];
 
@@ -57,7 +57,7 @@ function AdminRoomScreen() {
             </button> */}
           </div>
           <div className="col-md-12">
-            <Table columns={columns} dataSource={roooms} />
+            <Table columns={columns} dataSource={rooms} />
           </div>
         </>
       )}
